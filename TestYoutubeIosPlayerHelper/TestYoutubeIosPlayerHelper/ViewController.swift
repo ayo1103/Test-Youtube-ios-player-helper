@@ -9,17 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var youtubePlayer: YTPlayerView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        youtubePlayer.loadWithVideoId("M7lc1UVf-VE", playerVars: ["playsinline" : 1])
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func play(sender: AnyObject) {
+        youtubePlayer.cueVideoById("M7lc1UVf-VE", startSeconds: 30, suggestedQuality: YTPlaybackQuality.Auto)
+        youtubePlayer.playVideo()
     }
-
-
 }
 
